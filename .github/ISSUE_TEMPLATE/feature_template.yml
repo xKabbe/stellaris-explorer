@@ -1,0 +1,50 @@
+name: "💡 Feature Request"
+description: "Request a new feature to be added"
+title: "<title>"
+labels: [
+  "enhancement",
+  "test",
+  "documentation"
+]
+body:
+  # Description
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      placeholder: "Short and explicit description..."
+      description: "Please enter an explicit description."
+    validations:
+      required: true
+  # Additional Context
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      placeholder: "![DESCRIPTION](LINK.png)"
+      description: "Add additional context (e.g links, images or logs)."
+    validations:
+      required: false
+  # Expected Actions
+  - type: textarea
+    id: expected_actions
+    attributes:
+      label: "Expected Actions"
+      description: "Please define the expected actions."
+      value: |
+        - [ ] <action 1>
+        - [ ] <action 2>
+        - [ ] <action 3>
+    validations:
+      required: true
+  # Definition Of Done
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: "Definition Of Done"
+      description: "Must be done and checked off before the completion of the issue."
+      options:
+        - label: "Code implemented"
+        - label: "Tests implemented and passing"
+        - label: "Documentation implemented"
+        - label: "GitHub Actions are passing"

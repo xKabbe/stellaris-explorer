@@ -1,0 +1,97 @@
+name: "🐛 Bug Report"
+description: "Report a bug"
+title: "<title>"
+labels: [
+"bug"
+]
+body:
+  # Description
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      placeholder: "Short and explicit description..."
+      description: "Please enter an explicit description."
+    validations:
+      required: true
+  # Reproduction Steps
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: "Reproduction Steps"
+      description: "Please enter an explicit description of your issue."
+      value: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  # Screenshots
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots"
+      placeholder: "![DESCRIPTION](LINK.png)"
+      description: "If applicable, add screenshots to help explain your problem."
+    validations:
+      required: false
+  # Logs
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      description: "Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks."
+    validations:
+      required: false
+  # Browsers
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: "Browsers"
+      description: "What browsers are you seeing the problem on?"
+      multiple: true
+      options:
+        - "Firefox"
+        - "Chrome"
+        - "Safari"
+        - "Microsoft Edge"
+        - "Opera"
+    validations:
+      required: false
+  # OS
+  - type: dropdown
+    id: os
+    attributes:
+      label: "OS"
+      description: "What is the impacted environment?"
+      multiple: true
+      options:
+        - "Windows"
+        - "Linux"
+        - "Mac"
+    validations:
+      required: false
+  # Expected Actions
+  - type: textarea
+    id: expected_actions
+    attributes:
+      label: "Expected Actions"
+      description: "Please define the expected actions."
+      value: |
+        - [ ] <action 1>
+        - [ ] <action 2>
+        - [ ] <action 3>
+    validations:
+      required: true
+  # Definition Of Done
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: "Definition Of Done"
+      description: "Must be done and checked off before the completion of the issue."
+      options:
+        - label: "Code adjusted"
+        - label: "Tests adjusted and passing"
+        - label: "Bug fixed"
+        - label: "GitHub Actions are passing"

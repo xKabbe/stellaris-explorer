@@ -1,0 +1,46 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment directories (if you're using venv, pipenv, or conda)
+venv/
+env/
+.venv/
+.venv3/
+.venv2/
+.pipenv/
+.conda/
+
+# Ignore Jupyter Notebook checkpoints and output
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Ignore user-specific environment files
+*.env
+
+# Ignore generated analysis results (assumes results are saved in "results" directory)
+/results/
+
+# Ignore test coverage files
+/coverage/
+.coverage
+
+# Ignore data files (assumes input data is saved in "data" directory)
+/data/
+
+# Ignore user-specific project settings (e.g., PyCharm, VS Code settings)
+.idea/
+.vscode/
+
+# Ignore compiled binaries or executables
+*.exe
+*.dll
+*.so
+*.out
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
