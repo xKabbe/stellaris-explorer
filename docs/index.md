@@ -63,12 +63,3 @@ To view the project documentation locally and start a live-reloading server, fol
 | `mkdocs serve` | This command will start a local development server, and you can access the documentation at http://127.0.0.1:8000/. <br>As you make changes to the documentation files, MkDocs will automatically update the rendered content in your browser |
 | `mkdocs build` | This command will build the documentation site                                                                                                                                                                                                |
 | `mkdocs -h`    | This command will print the help message and exit                                                                                                                                                                                             |
-
-## Contribution
-
-If you'd like to contribute to Stellaris Explorer, please follow the guidelines in [CONTRIBUTING](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
