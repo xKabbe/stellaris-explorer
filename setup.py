@@ -16,13 +16,13 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/xKabbe/stellaris-explorer',
-    # classifiers=[
-    #     'Development Status :: 3 - Alpha',
-    #     'Intended Audience :: Science/Research',
-    #     'License :: OSI Approved :: MIT License',
-    #     'Programming Language :: Python :: 3',
-    #     'Programming Language :: Python :: 3.11',
-    #     'Programming Language :: Python :: 3.12',
-    # ],
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+    ],
 )
 
