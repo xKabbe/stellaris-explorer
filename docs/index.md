@@ -44,6 +44,7 @@ Coming soon...
 | `pytest test_module.py::test_fn` | Run a specific test function in a module.                                |
 | `pytest -k expression`           | Run tests that match the given keyword expression.                       |
 | `pytest -m marker`               | Run tests that have a specific marker.                                   |
+| `pytest --headless`              | Run tests in headless mode (doesn't show browser window).                |
 | `pytest --fixtures`              | Show available fixtures.                                                 |
 | `pytest --cov=your_module`       | Measure code coverage for your module. Requires the `pytest-cov` plugin. |
 | `pytest --junitxml=result.xml`   | Generate JUnit-style XML reports.                                        |
