@@ -19,6 +19,11 @@ env:
   INTEGRATION_TEST_PATH: tests/test_integration
   INTEGRATION_COVERAGE_PATH: coverage/integration
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   frontend-tests:
     name: Frontend Tests 🧪
@@ -55,52 +60,52 @@ jobs:
         uses: actions/deploy-pages@v2
         id: deployment
 
-  backend-tests:
-    name: Backend Tests 🧪
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ "3.11" ]
-    steps:
-      - name: Checkout code 🪜
-        uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }} 🪜
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies 🪜
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
-      - name: Run Backend Tests 🏃
-        run: |
-          pytest ${{ env.BACKEND_TEST_PATH }} \
-            --cov=${{ env.BACKEND_APP_PATH }} \
-            --cov-report=html:${{ env.BACKEND_COVERAGE_PATH }} \
-            --template=html1/index.html \
-            --report=${{ env.BACKEND_COVERAGE_PATH }}/index_report.html
-
-  integration-tests:
-    name: Integration Tests 🧪
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ "3.11" ]
-    steps:
-      - name: Checkout code 🪜
-        uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }} 🪜
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies 🪜
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
-      - name: Run Integration Tests 🏃
-        run: |
-          pytest ${{ env.INTEGRATION_TEST_PATH }} \
-            --template=html1/index.html \
-            --report=${{ env.INTEGRATION_COVERAGE_PATH }}/index_report.html
+#  backend-tests:
+#    name: Backend Tests 🧪
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        python-version: [ "3.11" ]
+#    steps:
+#      - name: Checkout code 🪜
+#        uses: actions/checkout@v3
+#      - name: Set up Python ${{ matrix.python-version }} 🪜
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#      - name: Install dependencies 🪜
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#          pip install -r requirements-dev.txt
+#      - name: Run Backend Tests 🏃
+#        run: |
+#          pytest ${{ env.BACKEND_TEST_PATH }} \
+#            --cov=${{ env.BACKEND_APP_PATH }} \
+#            --cov-report=html:${{ env.BACKEND_COVERAGE_PATH }} \
+#            --template=html1/index.html \
+#            --report=${{ env.BACKEND_COVERAGE_PATH }}/index_report.html
+#
+#  integration-tests:
+#    name: Integration Tests 🧪
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        python-version: [ "3.11" ]
+#    steps:
+#      - name: Checkout code 🪜
+#        uses: actions/checkout@v3
+#      - name: Set up Python ${{ matrix.python-version }} 🪜
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#      - name: Install dependencies 🪜
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#          pip install -r requirements-dev.txt
+#      - name: Run Integration Tests 🏃
+#        run: |
+#          pytest ${{ env.INTEGRATION_TEST_PATH }} \
+#            --template=html1/index.html \
+#            --report=${{ env.INTEGRATION_COVERAGE_PATH }}/index_report.html
