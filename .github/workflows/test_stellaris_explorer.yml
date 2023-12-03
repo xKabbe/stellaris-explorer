@@ -1,40 +1,74 @@
 name: Test Stellaris Explorer
 run-name: ${{ github.actor }} is testing 🧪 the Stellaris Explorer 💻
 
-# Controls when the action will run.
 on:
   push:
     branches:
       - master
   pull_request:
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+env:
+  FRONTEND_APP_PATH: app/frontend
+  FRONTEND_TEST_PATH: tests/test_app/test_frontend
+  FRONTEND_COVERAGE_PATH: coverage/frontend
+
+  BACKEND_APP_PATH: app/backend
+  BACKEND_TEST_PATH: tests/test_app/test_backend
+  BACKEND_COVERAGE_PATH: coverage/backend
+
+  INTEGRATION_TEST_PATH: tests/test_integration
+  INTEGRATION_COVERAGE_PATH: coverage/integration
+
 jobs:
-  # ID of the job
-  python-pytest:
-    # Name of the job as it will be displayed in GitHub
-    name: Python Pytest 🧪
-    # The type of runner that the job will run on
+  common-steps: &common-steps
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.11"]
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Check out the repository code
       - name: Checkout code
         uses: actions/checkout@v3
-      # Set up Python environment/version
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      # Install necessary dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
-      # Run tests
-      - name: Test with pytest
+
+  frontend-tests:
+    name: Frontend Tests 🧪
+    <<: *common-steps
+    steps:
+      - name: Run Frontend Tests 🏃
         run: |
-          pytest
+          pytest ${{ env.FRONTEND_TEST_PATH }} \
+            --cov=${{ env.FRONTEND_APP_PATH }} \
+            --cov-report=html:${{ env.FRONTEND_COVERAGE_PATH }} \
+            --template=html1/index.html \
+            --report=${{ env.FRONTEND_COVERAGE_PATH }}/index_report.html \
+            --headless
+
+  backend-tests:
+    name: Backend Tests 🧪
+    <<: *common-steps
+    steps:
+      - name: Run Backend Tests 🏃
+        run: |
+          pytest ${{ env.BACKEND_TEST_PATH }} \
+            --cov=${{ env.BACKEND_APP_PATH }} \
+            --cov-report=html:${{ env.BACKEND_COVERAGE_PATH }} \
+            --template=html1/index.html \
+            --report=${{ env.BACKEND_COVERAGE_PATH }}/index_report.html
+
+  integration-tests:
+    name: Integration Tests 🧪
+    <<: *common-steps
+    steps:
+      - name: Run Integration Tests 🏃
+        run: |
+          pytest ${{ env.INTEGRATION_TEST_PATH }} \
+            --template=html1/index.html \
+            --report=${{ env.INTEGRATION_COVERAGE_PATH }}/index_report.html

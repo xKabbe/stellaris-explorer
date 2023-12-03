@@ -23,7 +23,13 @@ It provides tools like `DashComposite` and `DashDuo` for testing the frontend be
 To run frontend unit tests, execute the following command in your project's root directory:
 
 ```bash
-pytest tests/test_app/test_frontend/
+pytest tests/test_app/test_frontend
+```
+
+or with full coverage reports:
+
+```bash
+pytest tests/test_app/test_frontend --cov=app/frontend --cov-report=html:coverage/frontend --template=html1/index.html --report=coverage/frontend/index_report.html --headless
 ```
 
 ### Backend
@@ -36,7 +42,13 @@ It offers a flexible and easy-to-use framework for writing comprehensive backend
 To run backend unit tests, execute the following command in your project's root directory:
 
 ```bash
-pytest tests/test_app/test_backend/
+pytest tests/test_app/test_backend
+```
+
+or with full coverage reports:
+
+```bash
+pytest tests/test_app/test_backend --cov=app/backend --cov-report=html:coverage/backend --template=html1/index.html --report=coverage/backend/index_report.html
 ```
 
 ## Integration Testing
@@ -47,7 +59,13 @@ It involves testing interactions between frontend and backend components.
 To run integration tests, execute the following command in your project's root directory:
 
 ```bash
-pytest tests/test_integration/
+pytest tests/test_integration
+```
+
+or with full coverage reports:
+
+```bash
+pytest tests/test_integration --template=html1/index.html --report=coverage/integration/index_report.html
 ```
 
 Feel free to explore the individual test files to gain insights into specific test cases and scenarios.
