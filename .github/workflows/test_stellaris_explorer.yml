@@ -19,17 +19,9 @@ env:
   INTEGRATION_TEST_PATH: tests/test_integration
   INTEGRATION_COVERAGE_PATH: coverage/integration
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   frontend-tests:
     name: Frontend Tests 🧪
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -54,16 +46,16 @@ jobs:
             --template=html1/index.html \
             --report=${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html \
             --headless
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
       - name: Upload Frontend Coverage Report
         uses: actions/upload-pages-artifact@v1
         with:
           name: frontend-coverage-report
           path: ${{ env.FRONTEND_COVERAGE_PATH }}
-      - name: Deploy Coverage Report To GitHub Pages
-        uses: actions/deploy-pages@v2
-        id: deployment
+      - name: Download Frontend Coverage Report
+        uses: actions/download-artifact@v2
+        with:
+          name: frontend-coverage-report
+          path: ${{ env.FRONTEND_COVERAGE_PATH }}
 
 #  backend-tests:
 #    name: Backend Tests 🧪
