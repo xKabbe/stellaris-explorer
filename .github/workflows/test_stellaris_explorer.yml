@@ -20,28 +20,24 @@ env:
   INTEGRATION_COVERAGE_PATH: coverage/integration
 
 jobs:
-  common-steps: &common-steps
+  frontend-tests:
+    name: Frontend Tests 🧪
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version: [ "3.11" ]
     steps:
-      - name: Checkout code
+      - name: Checkout code 🪜
         uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }} 🪜
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
+      - name: Install dependencies 🪜
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
-
-  frontend-tests:
-    name: Frontend Tests 🧪
-    <<: *common-steps
-    steps:
       - name: Run Frontend Tests 🏃
         run: |
           pytest ${{ env.FRONTEND_TEST_PATH }} \
@@ -53,8 +49,22 @@ jobs:
 
   backend-tests:
     name: Backend Tests 🧪
-    <<: *common-steps
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.11" ]
     steps:
+      - name: Checkout code 🪜
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }} 🪜
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies 🪜
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
       - name: Run Backend Tests 🏃
         run: |
           pytest ${{ env.BACKEND_TEST_PATH }} \
@@ -65,8 +75,22 @@ jobs:
 
   integration-tests:
     name: Integration Tests 🧪
-    <<: *common-steps
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.11" ]
     steps:
+      - name: Checkout code 🪜
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }} 🪜
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies 🪜
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
       - name: Run Integration Tests 🏃
         run: |
           pytest ${{ env.INTEGRATION_TEST_PATH }} \
