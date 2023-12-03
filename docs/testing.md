@@ -29,7 +29,7 @@ pytest tests/test_app/test_frontend
 or with full coverage reports:
 
 ```bash
-pytest tests/test_app/test_frontend --cov=app/frontend --cov-report=html:coverage/frontend --template=html1/index.html --report=coverage/frontend/index_report.html --headless
+pytest tests/test_app/test_frontend --cov=app/frontend --cov-report=html:coverage/frontend --template=html1/index.html --report=coverage/frontend/frontend-coverage-report.html --headless
 ```
 
 ### Backend
@@ -48,7 +48,7 @@ pytest tests/test_app/test_backend
 or with full coverage reports:
 
 ```bash
-pytest tests/test_app/test_backend --cov=app/backend --cov-report=html:coverage/backend --template=html1/index.html --report=coverage/backend/index_report.html
+pytest tests/test_app/test_backend --cov=app/backend --cov-report=html:coverage/backend --template=html1/index.html --report=coverage/backend/backend-coverage-report.html
 ```
 
 ## Integration Testing
@@ -65,7 +65,7 @@ pytest tests/test_integration
 or with full coverage reports:
 
 ```bash
-pytest tests/test_integration --template=html1/index.html --report=coverage/integration/index_report.html
+pytest tests/test_integration --template=html1/index.html --report=coverage/integration/integration-coverage-report.html
 ```
 
 Feel free to explore the individual test files to gain insights into specific test cases and scenarios.
