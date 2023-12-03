@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           name: frontend-coverage-report
-          path: ${{ env.FRONTEND_COVERAGE_PATH }}
+          path: ${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html
       - name: Deploy Coverage Report To GitHub Pages
         uses: actions/deploy-pages@v2
         id: deployment
