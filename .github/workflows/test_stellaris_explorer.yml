@@ -46,6 +46,14 @@ jobs:
             --template=html1/index.html \
             --report=${{ env.FRONTEND_COVERAGE_PATH }}/index_report.html \
             --headless
+      - name: Upload Frontend Coverage Report
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: frontend-coverage-report
+          path: ${{ env.FRONTEND_COVERAGE_PATH }}
+      - name: Deploy Coverage Report To GitHub Pages
+        uses: actions/deploy-pages@v2
+        id: deployment
 
   backend-tests:
     name: Backend Tests 🧪
