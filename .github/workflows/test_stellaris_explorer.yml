@@ -49,7 +49,7 @@ jobs:
             --cov=${{ env.FRONTEND_APP_PATH }} \
             --cov-report=html:${{ env.FRONTEND_COVERAGE_PATH }} \
             --template=html1/index.html \
-            --report=${{ env.FRONTEND_COVERAGE_PATH }}/index_report.html \
+            --report=${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html \
             --headless
       - name: Upload Frontend Coverage Report
         uses: actions/upload-pages-artifact@v1
