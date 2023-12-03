@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           name: frontend-coverage-report
-          path: ${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html
+          path: ${{ env.FRONTEND_COVERAGE_PATH }}
 
   backend-tests:
     name: Backend Tests 🧪
@@ -81,7 +81,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           name: backend-coverage-report
-          path: ${{ env.BACKEND_COVERAGE_PATH }}/backend-coverage-report.html
+          path: ${{ env.BACKEND_COVERAGE_PATH }}
 
   integration-tests:
     name: Integration Tests 🧪
@@ -110,4 +110,4 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           name: integration-coverage-report
-          path: ${{ env.INTEGRATION_COVERAGE_PATH }}/integration-coverage-report.html
+          path: ${{ env.INTEGRATION_COVERAGE_PATH }}
