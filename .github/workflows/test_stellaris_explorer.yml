@@ -27,6 +27,9 @@ permissions:
 jobs:
   frontend-tests:
     name: Frontend Tests 🧪
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,11 +54,13 @@ jobs:
             --template=html1/index.html \
             --report=${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html \
             --headless
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
       - name: Upload Frontend Coverage Report
         uses: actions/upload-pages-artifact@v1
         with:
           name: frontend-coverage-report
-          path: ${{ env.FRONTEND_COVERAGE_PATH }}/frontend-coverage-report.html
+          path: ${{ env.FRONTEND_COVERAGE_PATH }}
       - name: Deploy Coverage Report To GitHub Pages
         uses: actions/deploy-pages@v2
         id: deployment
